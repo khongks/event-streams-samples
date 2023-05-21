@@ -35,8 +35,10 @@ public class Environment {
         String vcapServices = System.getenv("VCAP_SERVICES");
         logger.info("VCAP_SERVICES: \n" + vcapServices);
         if (vcapServices == null) {
-            logger.error("VCAP_SERVICES environment variable is null.");
-            throw new IllegalStateException("VCAP_SERVICES environment variable is null.");
+            // logger.error("VCAP_SERVICES environment variable is null.");
+            // throw new IllegalStateException("VCAP_SERVICES environment variable is null.");
+
+            vcapServices = "{\"instance_id\" : \"test\"}";
         }
         return transformVcapServices(vcapServices);
     }

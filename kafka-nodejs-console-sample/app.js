@@ -149,7 +149,7 @@ var driver_options = {
     'security.protocol': 'sasl_ssl',
     'ssl.ca.location': opts.calocation,
     'sasl.mechanisms': 'PLAIN',
-    'sasl.username': 'token',
+    'sasl.username': 'my-client-user',
     'sasl.password': opts.api_key,
     'broker.version.fallback': '0.10.0',  // still needed with librdkafka 0.11.6 to avoid fallback to 0.9.0
     'log.connection.close' : false

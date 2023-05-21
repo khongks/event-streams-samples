@@ -259,8 +259,13 @@ public class EventStreamsConsoleSample {
         Map<String, Object> configs = new HashMap<>();
         configs.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, boostrapServers);
         configs.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
-        configs.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
-        configs.put(SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"token\" password=\"" + apikey + "\";");
+        configs.put(SaslConfigs.SASL_MECHANISM, "SCRAM-SHA-512");
+        String saslJaasConfig = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"my-client-user\" password=\"uY21nuAhTIX7JmiJKBpmHyM79RvZt59c\";";
+        configs.put(SaslConfigs.SASL_JAAS_CONFIG, saslJaasConfig);
+        // TLS Properties
+        configs.put(SslConfigs.SSL_PROTOCOL_CONFIG, "TLSv1.2");
+        configs.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "./es-cert.p12");
+        configs.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "WssicjOr4Psh");
         return configs;
     }
 
